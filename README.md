@@ -32,7 +32,7 @@ head earthquakes.csv
 ```
 > *ingest.sh*:
 
-> ```
+```
 wget http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/all_week.csv -O earthquakes.csv
 ```
 
