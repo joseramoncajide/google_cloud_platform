@@ -154,7 +154,6 @@ bash ./find_my_ip.sh
 
 > Note: If you lose your Cloud Shell VM due to inactivity, you will have to reauthorize your new Cloud Shell VM with Cloud SQL. For your convenience, lab3a includes a script called `authorize_cloudshell.sh` that you can run.
 
-*IP: 35.184.59.111 | User: root | Pass: j____*
 
 **Create database and import data**
 
@@ -182,4 +181,55 @@ select * from Accommodation where type = 'castle' and price < 1500;
 +----+--------------------------+--------------+-------+-------+--------+--------+
 5 rows in set (0.10 sec)
 
+```
+
+#### 4.Recommendations ML with Dataproc
+
+Carry out recommendations machine learning using Dataproc
+
+* Launch DataprocRun Spark
+* ML jobs using Dataproc
+
+```
+cd ~/training-data-analyst/CPB100/lab3b
+bash authorize_dataproc.sh   cluster-1   us-central1-b   2
+```
+
+**Run ML model**
+
+Change MySql connection parameters:
+
+```
+nano sparkml/train_and_apply.py
+```
+
+```
+gsutil cp sparkml/tr*.py gs://cpb100-162913/
+```
+
+Submit job to Dataproc: `gs://cpb100-162913/train_and_apply.py`
+
+**Explore ML results**
+
+```
+bash ../lab3a/authorize_cloudshell.sh
+mysql --host=35.184.59.111 --user=root --password
+```
+
+```sql
+use recommendation_spark;
+select r.userid, r.accoid, r.prediction, a.title, a.location, a.price, a.rooms, a.rating, a.type from Recommendation as r, Accommodation as a where r.accoid = a.id and r.userid = 10;
+```
+
+```
++--------+--------+------------+-----------------------------+--------------+-------+-------+--------+---------+
+| userid | accoid | prediction | title                       | location     | price | rooms | rating | type    |
++--------+--------+------------+-----------------------------+--------------+-------+-------+--------+---------+
+| 10     | 74     |   1.789905 | Giant Calm Fort             | Melbourne    |  2400 |    12 |    2.3 | castle  |
+| 10     | 43     |  1.6393561 | Nice Private Hut            | Melbourne    |    60 |     3 |    2.8 | cottage |
+| 10     | 2      |  1.5926311 | Cozy Calm Hut               | London       |    65 |     2 |    4.1 | cottage |
+| 10     | 31     |  1.5924639 | Colossal Private Castle     | Buenos Aires |  1400 |    15 |    3.3 | castle  |
+| 10     | 77     |  1.5140096 | Great Private Country House | Dublin       |  1150 |    10 |    2.4 | mansion |
++--------+--------+------------+-----------------------------+--------------+-------+-------+--------+---------+
+5 rows in set (0.10 sec)
 ```
