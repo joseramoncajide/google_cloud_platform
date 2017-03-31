@@ -1,5 +1,8 @@
 # Google Cloud Platform
+
 Google Certified Professional - Data Engineer 
+
+Google Cloud Platform Big Data and Machine Learning Fundamentals
 
 ## Labs
 
