@@ -183,7 +183,7 @@ select * from Accommodation where type = 'castle' and price < 1500;
 
 ```
 
-#### 4.Recommendations ML with Dataproc
+### 4.Recommendations ML with Dataproc
 
 Carry out recommendations machine learning using Dataproc
 
@@ -233,3 +233,27 @@ select r.userid, r.accoid, r.prediction, a.title, a.location, a.price, a.rooms, 
 +--------+--------+------------+-----------------------------+--------------+-------+-------+--------+---------+
 5 rows in set (0.10 sec)
 ```
+
+### 5. Create ML dataset with BigQuery
+
+Use TensorFlow to predict taxicab demand on a day-by-day basis.
+
+Using BigQuery from within Datalab to create a Pandas dataframe that will be the training data for predicting taxicab demand.
+
+* Use **BigQuery** and **Datalab** to explore and visualize data
+
+* Build a Pandas dataframe that will be used as the training dataset for machine learning using **TensorFlow**.
+
+**Run Datalab from Cloud Shell**
+
+```
+git clone http://github.com/GoogleCloudPlatform/training-data-analyst
+cd training-data-analyst/datalab/cloudshell
+./create_vm.sh
+./start_tunnel.sh
+```
+
+[Demand forecasting with BigQuery and TensorFlow](https://github.com/GoogleCloudPlatform/training-data-analyst/blob/master/CPB100/lab4a/demandforecast.ipynb)
+
+
+
