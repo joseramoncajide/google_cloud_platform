@@ -255,5 +255,14 @@ cd training-data-analyst/datalab/cloudshell
 
 [Demand forecasting with BigQuery and TensorFlow](https://github.com/GoogleCloudPlatform/training-data-analyst/blob/master/CPB100/lab4a/demandforecast.ipynb)
 
+[Notebook](notebooks/demandforecast.ipynb)
+
+### 6. Machine Learning APIs
+
+[Using Machine Learning APIs](https://github.com/GoogleCloudPlatform/training-data-analyst/blob/master/CPB100/lab4c/mlapis.ipynb)
+
+[Notebook](notebooks/gcp_machine_apis.ipynb)
+
+
 
 
